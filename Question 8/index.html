@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab2 - Question 8</title>
+</head>
+<body>
+    <script>
+        // Using class-extends etc. for Question 4 (instead of constructor functions)
+
+        class Vehicle {
+            constructor(type) {
+                Vehicle.VEHICLECOUNT++;
+                this.type = type;
+            }
+
+            drive() {
+                console.log('Vehicle is driving');
+            }
+        }
+
+        Vehicle.VEHICLECOUNT = 0;
+
+        const vehicle = new Vehicle('Toyota');
+        vehicle.drive();                       //Vehicle is driving
+        console.log(Vehicle.VEHICLECOUNT);    //1
+
+        class Car extends Vehicle {
+            constructor(type) {
+                super(type);
+            }
+
+            balanceWheels() {
+                console.log('Wheels are balanced');
+            }
+        }
+
+        const car = new Car('Nissan');
+        car.drive();                        // Vehicle is driving
+        car.balanceWheels();                // Wheels are balanced
+        console.log(Vehicle.VEHICLECOUNT);  //2
+    </script>
+</body>
+</html>
