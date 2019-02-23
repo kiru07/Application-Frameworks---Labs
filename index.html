@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab2</title>
+</head>
+<body>
+    <script>
+
+        var vehicleName = 'Toyota';
+
+        function printVehicleNameOuter() {
+            console.log(this.vehicleName);
+        }
+
+        console.log(this);
+
+        printVehicleNameOuter();
+
+        var vehicle = {
+            vehicleName: 'Nissan',
+            printVehicleNameInner: printVehicleNameOuter
+        };
+
+        vehicle.printVehicleNameInner();
+    </script>
+</body>
+</html>
