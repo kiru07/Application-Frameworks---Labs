@@ -19,10 +19,15 @@
 
         var vehicle = {
             vehicleName: 'Nissan',
-            printVehicleNameInner: printVehicleNameOuter
+            printVehicleNameInner: function() {
+                return function() {
+                    console.log(this.vehicleName);
+                }
+            }
         };
 
-        vehicle.printVehicleNameInner();
+        var execute = vehicle.printVehicleNameInner();
+        execute();
     </script>
 </body>
 </html>
