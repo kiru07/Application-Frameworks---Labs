@@ -1,4 +1,4 @@
 # Application-Frameworks---Labs
 Lab activities for AF module
 
-Test commit
+Each lab activity is stored in seperate branches
