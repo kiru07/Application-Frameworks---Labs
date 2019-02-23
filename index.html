@@ -13,9 +13,9 @@
             console.log(this.vehicleName);
         }
 
-        console.log(this);
+        console.log(this);  // Window
 
-        printVehicleNameOuter();
+        printVehicleNameOuter();  // Toyota
 
         var vehicle = {
             vehicleName: 'Nissan',
@@ -27,7 +27,14 @@
         };
 
         var execute = vehicle.printVehicleNameInner();
-        execute();
+        execute();  //Toyota
+
+        // Object.call() -> to change execution context
+        execute.call(vehicle);  //Nissan
+
+        // Object.bind()
+        var execute2 = vehicle.printVehicleNameInner().bind(vehicle);
+        execute2();  // Nissan
     </script>
 </body>
 </html>
