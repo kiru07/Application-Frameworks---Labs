@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab2 - Question 5</title>
+</head>
+<body>
+    <script>
+
+        //var
+
+        var x = 5;
+
+        if (x < 10) {
+            var oldVar = 'No-Block-Scope';
+        }
+        console.log(oldVar);    // No-Block-Scope;
+
+        //let
+
+        let vehicleName = 'Toyota';
+        vehicleName = 'Nissan';
+
+        if(x < 10) {
+            let letVar = 'let-has-block-scope';
+            console.log(letVar);    // let-has-block-scope
+        }
+
+        //console.log(letVar); //ReferenceError: letVar is not defined
+
+        //const
+
+        const COUNTRY = 'Japan';
+        //COUNTRY = 'Australia'; //TypeError: invalid assignment to const
+
+        if(x < 10) {
+            const aConst = 'const-has-block-scope';
+            console.log(aConst);    // const-has-block-scope
+        }
+
+        //console.log(aConst);  //ReferenceError: aConst is not defined
+    </script>
+</body>
+</html>
