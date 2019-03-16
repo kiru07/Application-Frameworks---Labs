@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab2</title>
+</head>
+<body>
+    <script>
+
+        var vehicleName = 'Toyota';
+
+        function printVehicleNameOuter(number) {
+            console.log(this.vehicleName, number);
+        }
+
+        console.log(this);  // Window
+
+        printVehicleNameOuter(15);  // Toyota 15
+
+        var vehicle = {
+            vehicleName: 'Nissan',
+            printVehicleNameInner: function() {
+                return function(num) {
+                    console.log(this.vehicleName, num);
+                }
+            }
+        };
+
+        var execute = vehicle.printVehicleNameInner();
+        execute(25);  //Toyota 25
+
+        // Object.call() -> to change execution context
+        execute.call(vehicle, 30);  //Nissan 30
+
+        // Object.bind()
+        var execute2 = vehicle.printVehicleNameInner().bind(vehicle);
+        execute2(55);  // Nissan 55
+    </script>
+</body>
+</html>

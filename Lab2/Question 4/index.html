@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab2 - Question 4</title>
+</head>
+<body>
+    <script>
+
+        // Classes in JS (Using Constructor functions)
+
+        function Vehicle(type) {
+            Vehicle.VEHICLECOUNT++;
+            this.type = type;
+
+        }
+
+        // Method added directly to prototype
+        Vehicle.prototype.drive = function() {
+            console.log('Vehicle is driving');
+        };
+
+        //Static variable (property of Vehicle object (ie: the constructor function)
+        Vehicle.VEHICLECOUNT = 0;
+
+        var vehicle = new Vehicle('Toyota');
+        vehicle.drive();
+
+        //Car extends Vehicle
+        function Car(type) {
+            Vehicle.call(this, type);  // using call() to set execution context of Vehicle() is 'this' Car object.
+        }
+
+        Car.prototype = Object.create(Vehicle.prototype);
+        Car.prototype.constructor = Car;
+
+        // Add method to Car
+        Car.prototype.balanceWheels = function() {
+            console.log('Wheels are balanced');
+        }
+
+        var car = new Car('Nissan');
+        car.drive();
+        car.balanceWheels();
+
+        console.log(car.type, Vehicle.VEHICLECOUNT); // if line 31 is commented out this prints incorrect values.
+                                                    // This means we MUST call Vehicle() constructor from within Car() using correct execution context.
+
+        console.log(Car);
+        console.log(Vehicle);
+    </script>
+</body>
+</html>
